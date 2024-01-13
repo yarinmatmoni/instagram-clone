@@ -1,0 +1,11 @@
+@mixin narrow-layout {
+	@media (min-width: $padded-brake-mobile) {
+		@content;
+	}
+}
+
+@mixin wide-layout {
+	@media (min-width: $padded-brake-narrow) {
+		@content;
+	}
+}

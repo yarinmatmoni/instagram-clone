@@ -5,3 +5,13 @@ $blue-color: #0095f6;
 
 // BACKGROUND COLORS
 $bg-color: #fff;
+
+//LAYOUT
+$layout-padding: 20px;
+
+// LAYOUT BREAKPOINTS
+$brake-mobile: 728px;
+$brake-narrow: 1224px;
+
+$padded-brake-mobile: $brake-mobile + $layout-padding * 2;
+$padded-brake-narrow: $brake-narrow + $layout-padding * 2;

@@ -1,0 +1,25 @@
+.main-layout {
+	height: 100vh;
+	display: grid;
+	grid-template-columns: 1fr;
+	grid-template-rows: auto 1fr auto;
+	grid-template-areas: 'he he he' 'pa pa pa' 'na na na';
+
+	.page-layout {
+		grid-area: pa;
+	}
+
+	.suggest {
+		display: none;
+	}
+
+	@include narrow-layout {
+		grid-template-columns: auto 1fr;
+		grid-template-rows: 1fr;
+		grid-template-areas: 'na pa';
+
+		.header {
+			display: none;
+		}
+	}
+}
