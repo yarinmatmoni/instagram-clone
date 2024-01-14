@@ -1,3 +1,82 @@
 .navbar {
 	grid-area: na;
+
+	.name,
+	.logo,
+	.menu {
+		display: none;
+	}
+
+	.navbar-links {
+		height: $navbar-mobile-h;
+		display: flex;
+		align-items: center;
+		justify-content: space-evenly;
+		border-top: 1px solid $border-color;
+
+		a {
+			padding: 12px;
+			display: flex;
+			align-items: center;
+
+			&:not(.mobile-display) {
+				display: none;
+			}
+
+			img {
+				height: 24px;
+				width: 24px;
+			}
+
+			.profile {
+				border-radius: 50%;
+			}
+		}
+	}
+
+	@include narrow-layout {
+		border-right: 1px solid $border-color;
+		height: 100%;
+		width: 72px;
+		display: grid;
+		grid-template-rows: 92px 1fr 112px;
+
+		.logo {
+			padding-top: 12px;
+			align-items: center;
+			justify-content: center;
+			display: flex;
+			height: 92px;
+
+			img {
+				height: 26px;
+				width: 26px;
+			}
+		}
+
+		.navbar-links {
+			padding-top: 12px;
+			border-top: initial;
+			display: grid;
+			height: fit-content;
+			gap: 8px;
+
+			a {
+				&:not(.mobile-display) {
+					display: initial;
+				}
+			}
+		}
+
+		.menu {
+			display: flex;
+			align-items: center;
+			justify-content: center;
+
+			img {
+				height: 24px;
+				width: 24px;
+			}
+		}
+	}
 }
