@@ -22,4 +22,8 @@
 			display: none;
 		}
 	}
+
+	@include wide-layout {
+		grid-template-columns: 16% 1fr;
+	}
 }

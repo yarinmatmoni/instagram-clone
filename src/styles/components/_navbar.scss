@@ -48,9 +48,14 @@
 			display: flex;
 			height: 92px;
 
-			img {
+			.logo-image {
 				height: 26px;
 				width: 26px;
+				background-repeat: no-repeat;
+				background-image: url('../assets/svgs/logo-camera.svg');
+				background-size: contain;
+				background-repeat: no-repeat;
+				background-position: center;
 			}
 		}
 
@@ -63,7 +68,7 @@
 
 			a {
 				&:not(.mobile-display) {
-					display: initial;
+					display: flex;
 				}
 			}
 		}
@@ -77,6 +82,46 @@
 				height: 24px;
 				width: 24px;
 			}
+		}
+	}
+
+	@include wide-layout {
+		width: 100%;
+
+		.name {
+			display: block;
+		}
+
+		.navbar-links {
+			padding: 12px;
+			display: flex;
+			flex-direction: column;
+			align-items: flex-start;
+
+			a {
+				width: 100%;
+				gap: 16px;
+			}
+		}
+
+		.logo {
+			justify-content: flex-start;
+			padding: 16px 24px 0 24px;
+
+			.logo-image {
+				height: 29px;
+				width: 103px;
+				background-image: url('../assets/svgs/logo-instagram.svg');
+			}
+		}
+
+		.menu {
+			display: flex;
+			gap: 16px;
+			justify-content: flex-start;
+			padding: 24px;
+			height: fit-content;
+			align-items: flex-end;
 		}
 	}
 }
