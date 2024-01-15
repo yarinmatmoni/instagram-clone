@@ -18,6 +18,7 @@
 			padding: 12px;
 			display: flex;
 			align-items: center;
+			transition: all 0.3s ease;
 
 			&:not(.mobile-display) {
 				display: none;
@@ -26,6 +27,7 @@
 			img {
 				height: 24px;
 				width: 24px;
+				transition: all 0.3s ease;
 			}
 
 			.profile {
@@ -56,6 +58,13 @@
 				background-size: contain;
 				background-repeat: no-repeat;
 				background-position: center;
+				transition: all 0.3s ease;
+
+				&:hover {
+					background-color: $bg-color-hover;
+					border-radius: 8px;
+					transform: scale(1.08);
+				}
 			}
 		}
 
@@ -67,6 +76,15 @@
 			gap: 8px;
 
 			a {
+				&:hover {
+					background-color: $bg-color-hover;
+					border-radius: 8px;
+
+					img {
+						transform: scale(1.08);
+					}
+				}
+
 				&:not(.mobile-display) {
 					display: flex;
 				}
@@ -78,9 +96,20 @@
 			align-items: center;
 			justify-content: center;
 
-			img {
-				height: 24px;
-				width: 24px;
+			.menu-item {
+				display: flex;
+				padding: 12px;
+				cursor: pointer;
+				transition: all 0.3s ease;
+
+				&:hover {
+					border-radius: 8px;
+					background-color: $bg-color-hover;
+
+					img {
+						transform: scale(1.08);
+					}
+				}
 			}
 		}
 	}
@@ -112,16 +141,24 @@
 				height: 29px;
 				width: 103px;
 				background-image: url('../assets/svgs/logo-instagram.svg');
+
+				&:hover {
+					background-color: initial;
+					transform: initial;
+					border-radius: initial;
+				}
 			}
 		}
 
 		.menu {
-			display: flex;
-			gap: 16px;
 			justify-content: flex-start;
 			padding: 24px;
-			height: fit-content;
-			align-items: flex-end;
+
+			.menu-item {
+				display: flex;
+				gap: 16px;
+				width: 100%;
+			}
 		}
 	}
 }

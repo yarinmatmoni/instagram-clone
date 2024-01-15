@@ -45,8 +45,10 @@ const Navbar = () => {
 				</NavLink>
 			</div>
 			<div className='menu'>
-				<img src={Menu} alt='menu' />
-				<div className='name'>More</div>
+				<div className='menu-item'>
+					<img src={Menu} alt='menu' />
+					<div className='name'>More</div>
+				</div>
 			</div>
 		</nav>
 	);
