@@ -1,5 +1,6 @@
-import { NavLink } from 'react-router-dom';
+import { NavLink, useLocation } from 'react-router-dom';
 import Home from '../assets/svgs/btns/home.svg';
+import HomeFull from '../assets/svgs/btns/home-full.svg';
 import Search from '../assets/svgs/btns/search.svg';
 import Message from '../assets/svgs/btns/messenger.svg';
 import Heart from '../assets/svgs/btns/heart.svg';
@@ -9,6 +10,8 @@ import Create from '../assets/svgs/btns/create.svg';
 import Menu from '../assets/svgs/btns/menu2.svg';
 
 const Navbar = () => {
+	const { pathname } = useLocation();
+
 	return (
 		<nav className='navbar'>
 			<NavLink to='/' className='logo'>
@@ -16,7 +19,7 @@ const Navbar = () => {
 			</NavLink>
 			<div className='navbar-links'>
 				<NavLink to='/' className='mobile-display'>
-					<img src={Home} alt='home' />
+					<img src={pathname === '/' ? HomeFull : Home} alt='home' />
 					<div className='name'>Home</div>
 				</NavLink>
 				<NavLink to='/' className='mobile-display'>
