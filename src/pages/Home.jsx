@@ -1,4 +1,5 @@
 import { Header } from '../components/index';
+import { storyService } from '../services/story.service';
 
 const Home = () => {
 	return (
