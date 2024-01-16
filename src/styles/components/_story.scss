@@ -1,2 +1,38 @@
 .story {
+	display: grid;
+	grid-template-rows: auto $image-story-h auto;
+
+	.story-user-info {
+		display: grid;
+		grid-auto-flow: column;
+		grid-template-columns: auto 1fr auto;
+		align-items: center;
+		padding: 12px;
+		gap: 12px;
+
+		img {
+			height: 32px;
+			width: 32px;
+			border-radius: 50%;
+			overflow: hidden;
+		}
+
+		.story-userName {
+			font-size: 14px;
+			font-weight: 600;
+		}
+
+		.menu {
+			height: 24px;
+			width: 24px;
+		}
+	}
+
+	.story-image {
+		background-color: orange;
+	}
+
+	.story-details {
+		background-color: red;
+	}
 }

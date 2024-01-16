@@ -5,7 +5,7 @@ const StoryList = ({ stories }) => {
 	return (
 		<div className='story-list'>
 			{stories?.map((story) => (
-				<Story key={story._id} />
+				<Story key={story._id} story={story} />
 			))}
 		</div>
 	);
