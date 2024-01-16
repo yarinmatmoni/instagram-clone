@@ -1,6 +1,13 @@
 import { utilsService } from './utils.service';
+import { storageService } from './async-storage.service';
 
 const STORAGE_KEY = 'stories';
+
+const query = async () => {
+	const stories = await storageService.query(STORAGE_KEY);
+	return stories;
+};
+
 // PRIVATE FUNCTIONS
 const _createDemoData = () => {
 	let stories = JSON.parse(localStorage.getItem(STORAGE_KEY));
@@ -65,4 +72,4 @@ const _createLikes = (index) => {
 
 _createDemoData();
 
-export const storyService = {};
+export const storyService = { query };

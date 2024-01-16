@@ -1,5 +1,5 @@
 import Navbar from './Navbar';
 import Header from './Header';
-import Suggested from './Suggested';
+import StoryList from './StoryList';
 
-export { Navbar, Header, Suggested };
+export { Navbar, Header, StoryList };

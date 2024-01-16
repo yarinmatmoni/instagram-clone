@@ -9,10 +9,6 @@
 		grid-area: pa;
 	}
 
-	.suggest {
-		display: none;
-	}
-
 	@include narrow-layout {
 		grid-template-columns: auto 1fr;
 		grid-template-rows: 1fr;
