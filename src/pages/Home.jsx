@@ -1,5 +1,5 @@
 import { useEffect, useState } from 'react';
-import { StoryList } from '../components/index';
+import { StoryList, Suggest } from '../components/index';
 import { storyService } from '../services/story.service';
 
 const Home = () => {
@@ -21,6 +21,7 @@ const Home = () => {
 	return (
 		<div className='home'>
 			<StoryList stories={stories} />
+			<Suggest />
 		</div>
 	);
 };

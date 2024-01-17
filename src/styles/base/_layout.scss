@@ -16,6 +16,10 @@
 		grid-template-rows: 1fr;
 		grid-template-areas: 'na pa';
 
+		.page-layout {
+			height: 100vh;
+		}
+
 		.header {
 			display: none;
 		}

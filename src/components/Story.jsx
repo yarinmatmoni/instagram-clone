@@ -38,9 +38,10 @@ const Story = ({ story }) => {
 					<div className='txt'>{story.txt}</div>
 				</div>
 				{story.comments.length > 0 && (
-					<Link to='/' className='story-comments'>
-						View all {story.comments.length} comments
-					</Link>
+					<div className='story-comments'>
+						<Link to='/'>View all {story.comments.length} comments</Link>
+						<textarea type='text' placeholder='Add a comment...' autoComplete='off' />
+					</div>
 				)}
 				<div className='story-time-details'>5 hours ago</div>
 			</div>

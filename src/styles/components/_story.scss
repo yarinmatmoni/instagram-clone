@@ -88,10 +88,18 @@
 		}
 
 		.story-comments {
-			font-size: 14px;
-			font-weight: 400;
-			color: $light-gray;
-			margin-bottom: 4px;
+			display: grid;
+
+			a {
+				font-size: 14px;
+				font-weight: 400;
+				color: $light-gray;
+				margin-bottom: 4px;
+			}
+
+			textarea {
+				display: none;
+			}
 		}
 
 		.story-time-details {
@@ -99,5 +107,46 @@
 			color: $light-gray;
 			font-size: 12px;
 		}
+	}
+
+	@include narrow-layout {
+		max-width: 470px;
+		border-bottom: 1px solid $border-color;
+
+		.story-user-info {
+			padding: 12px 4px 12px 4px;
+		}
+
+		.story-details {
+			padding: 0 4px 0 4px;
+		}
+
+		.story-image {
+			img {
+				border-radius: 3px;
+			}
+		}
+
+		.story-details {
+			.story-comments {
+				textarea {
+					outline: none;
+					margin-top: 8px;
+					display: flex;
+					border: none;
+					min-height: 18px;
+					height: auto;
+					max-height: 80px;
+					resize: none;
+				}
+			}
+		}
+
+		.story-time-details {
+			display: none;
+		}
+	}
+
+	@include wide-layout {
 	}
 }

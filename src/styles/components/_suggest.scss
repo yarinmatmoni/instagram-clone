@@ -1,0 +1,9 @@
+.suggest {
+	display: none;
+
+	@include wide-layout {
+		width: 320px;
+		padding-left: 64px;
+		display: flex;
+	}
+}
