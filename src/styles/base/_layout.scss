@@ -26,6 +26,6 @@
 	}
 
 	@include wide-layout {
-		grid-template-columns: 16% 1fr;
+		grid-template-columns: $navbar-wide-w 1fr;
 	}
 }

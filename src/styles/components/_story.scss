@@ -110,7 +110,7 @@
 	}
 
 	@include narrow-layout {
-		max-width: 470px;
+		max-width: $story-w;
 		border-bottom: 1px solid $border-color;
 
 		.story-user-info {
@@ -145,8 +145,5 @@
 		.story-time-details {
 			display: none;
 		}
-	}
-
-	@include wide-layout {
 	}
 }
