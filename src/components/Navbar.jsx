@@ -38,7 +38,7 @@ const Navbar = () => {
 					<img src={Heart} alt='notifications' />
 					<div className='name'>Notifications</div>
 				</NavLink>
-				<NavLink to='/'>
+				<NavLink to='/create'>
 					<img src={Create} alt='create' />
 					<div className='name'>Create</div>
 				</NavLink>

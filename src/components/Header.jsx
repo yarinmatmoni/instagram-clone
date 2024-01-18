@@ -1,7 +1,7 @@
 import Logo from '../assets/svgs/logo-instagram.svg';
 import Create from '../assets/svgs/btns/create.svg';
 
-const header = () => {
+const Header = () => {
 	return (
 		<div className='header'>
 			<img src={Logo} alt='logo' className='logo' />
@@ -10,4 +10,4 @@ const header = () => {
 	);
 };
 
-export default header;
+export default Header;
