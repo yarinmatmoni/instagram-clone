@@ -1,22 +1,15 @@
-import { useEffect, useState } from 'react';
+import { useEffect } from 'react';
 import { StoryList, Suggest } from '../components/index';
-import { storyService } from '../services/story.service';
+import { useSelector } from 'react-redux';
+import { loadStories } from '../store/actions/story.action';
+// import { storyService } from '../services/story.service';
 
 const Home = () => {
-	const [stories, setStories] = useState(null);
+	const stories = useSelector((storeState) => storeState.storyReducer.stories);
 
 	useEffect(() => {
 		loadStories();
 	}, []);
-
-	const loadStories = async () => {
-		try {
-			const stories = await storyService.query();
-			setStories(stories);
-		} catch (error) {
-			console.log('error:', error);
-		}
-	};
 
 	return (
 		<div className='home'>

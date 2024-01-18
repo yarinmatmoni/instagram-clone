@@ -12,7 +12,7 @@ const Story = ({ story }) => {
 		<div className='story'>
 			<div className='story-user-info'>
 				<img src={Avatar} alt='user image' />
-				<div className='story-userName'>{story.by.fullName}</div>
+				<div className='story-userName'>{story.by.userName}</div>
 				<img src={Menu} alt='menu' className='menu' />
 			</div>
 			<div className='story-image'>
@@ -34,7 +34,7 @@ const Story = ({ story }) => {
 				)}
 
 				<div className='story-description'>
-					<Link to='/'>{story.by.fullName}</Link>
+					<Link to='/'>{story.by.userName}</Link>
 					<div className='txt'>{story.txt}</div>
 				</div>
 				{story.comments.length > 0 && (

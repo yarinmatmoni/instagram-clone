@@ -39,7 +39,8 @@ const _createStory = (index) => {
 const _createMiniUser = (index) => {
 	return {
 		_id: utilsService.makeId(),
-		fullName: `User Name ${index}`,
+		fullName: `Full Name ${index}`,
+		userName: `_UserName ${index}`,
 		imgUrl: '../assets/images/avatar.png',
 	};
 };
