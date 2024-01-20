@@ -1,6 +1,5 @@
 import { useRef } from 'react';
 import { useNavigate } from 'react-router-dom';
-import { uploadService } from '../services/upload.service';
 import Logo from '../assets/svgs/logo-instagram.svg';
 import Create from '../assets/svgs/btns/create.svg';
 
@@ -9,8 +8,10 @@ const Header = () => {
 	const navigate = useNavigate();
 
 	const uploadImg = async (event) => {
-		const { secure_url } = await uploadService.uploadImg(event);
-		navigate('/create', { state: secure_url });
+		//TODO: when i share the post
+		// const { secure_url } = await uploadService.uploadImg(event);
+		const selectedImageUrl = URL.createObjectURL(event.target.files[0]);
+		navigate('/create', { state: selectedImageUrl });
 	};
 
 	return (

@@ -6,7 +6,7 @@ const Modal = ({ children }) => {
 
 	return (
 		<div className='modal'>
-			<img src={Cancel} alt='exit' onClick={() => navigate(-1)} />
+			<img src={Cancel} alt='exit' className='cancel' onClick={() => navigate(-1)} />
 			<div className='modal-container'>{children}</div>
 		</div>
 	);

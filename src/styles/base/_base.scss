@@ -10,3 +10,19 @@ a {
 	font-size: 16px;
 	color: $black-color;
 }
+
+button {
+	background: none;
+	border: none;
+	font-weight: 600;
+	font-size: 16px;
+	outline: none;
+	cursor: pointer;
+}
+
+textarea {
+	outline: none;
+	border: none;
+	resize: none;
+	width: 100%;
+}

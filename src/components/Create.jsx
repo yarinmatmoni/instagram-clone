@@ -1,18 +1,48 @@
-import { useLocation } from 'react-router-dom';
+import { useRef, useState } from 'react';
+import { useLocation, useNavigate } from 'react-router-dom';
 import { Modal } from './index';
+import Cancel from '../assets/svgs/btns/cancel-dark.svg';
+import Avatar from '../assets/images/avatar.png';
 
 const Create = () => {
 	const { state: imageUrl } = useLocation();
+	const navigate = useNavigate();
+	const inputRef = useRef(null);
+
+	const [image, setImage] = useState();
+
+	const uploadImg = async (event) => {
+		const selectedImageUrl = URL.createObjectURL(event.target.files[0]);
+		setImage(selectedImageUrl);
+	};
 
 	return (
-		<>
-			{!imageUrl && (
-				<Modal>
-					<div>Create</div>
-				</Modal>
-			)}
-			{imageUrl && <div>Hey</div>}
-		</>
+		<Modal>
+			<div className='create'>
+				<div className='create-header'>
+					<img src={Cancel} alt='cancel' onClick={() => navigate(-1)} />
+					<div className='create-header-title'>New Photo Post</div>
+					<button type='button'>Share</button>
+				</div>
+				<div className='create-image-container'>
+					{imageUrl && <img src={imageUrl} alt='post image' />}
+					{!imageUrl && (
+						<>
+							{!image && <button onClick={() => inputRef.current.click()}>Select from computer</button>}
+							<input type='file' accept='img/*' onChange={uploadImg} ref={inputRef} />
+							{image && <img src={image} alt='post image' />}{' '}
+						</>
+					)}
+				</div>
+				<div className='create-details'>
+					<div className='create-details-user'>
+						<img src={Avatar} alt='user image' />
+						<div>userName</div>
+					</div>
+					<textarea placeholder='Add your description...'></textarea>
+				</div>
+			</div>
+		</Modal>
 	);
 };
 
