@@ -2,10 +2,25 @@ import { utilsService } from './utils.service';
 import { storageService } from './async-storage.service';
 
 const STORAGE_KEY = 'stories';
+const USER_KEY = 'user';
 
 const query = async () => {
 	const stories = await storageService.query(STORAGE_KEY);
 	return stories;
+};
+
+const getDefaultStory = () => {
+	const user = JSON.parse(localStorage.getItem(USER_KEY));
+
+	return {
+		_id: utilsService.makeId(),
+		txt: '',
+		by: _createMiniUser(0, user),
+		loc: null,
+		comments: [],
+		likedBy: [],
+		tags: [],
+	};
 };
 
 // PRIVATE FUNCTIONS
@@ -36,12 +51,12 @@ const _createStory = (index) => {
 	};
 };
 
-const _createMiniUser = (index) => {
+const _createMiniUser = (index, user) => {
 	return {
 		_id: utilsService.makeId(),
-		fullName: `Full Name ${index}`,
-		userName: `_UserName ${index}`,
-		imgUrl: '../assets/images/avatar.png',
+		fullName: user ? user.fullName : `Full Name ${index}`,
+		userName: user ? user.userName : `_UserName ${index}`,
+		imgUrl: user ? user.imgUrl : '../assets/images/avatar.png',
 	};
 };
 
@@ -73,4 +88,4 @@ const _createLikes = (index) => {
 
 _createDemoData();
 
-export const storyService = { query };
+export const storyService = { query, getDefaultStory };

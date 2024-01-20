@@ -1,13 +1,13 @@
 import { useEffect, useRef, useState } from 'react';
-import { useLocation, useNavigate } from 'react-router-dom';
+import { useLocation, useNavigate, useOutletContext } from 'react-router-dom';
 import { Modal } from './index';
 import Cancel from '../assets/svgs/btns/cancel-dark.svg';
-import Avatar from '../assets/images/avatar.png';
 
 const Create = () => {
 	const { state: imageUrl } = useLocation();
 	const navigate = useNavigate();
 	const inputRef = useRef(null);
+	const { story } = useOutletContext();
 
 	const [image, setImage] = useState(null);
 
@@ -35,8 +35,8 @@ const Create = () => {
 				</div>
 				<div className='create-details'>
 					<div className='create-details-user'>
-						<img src={Avatar} alt='user image' />
-						<div>userName</div>
+						<img src={story.by.imgUrl} alt='user image' />
+						<div>{story.by.userName}</div>
 					</div>
 					<textarea placeholder='Add your description...'></textarea>
 				</div>
