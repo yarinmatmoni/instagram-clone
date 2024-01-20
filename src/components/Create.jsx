@@ -1,4 +1,4 @@
-import { useRef, useState } from 'react';
+import { useEffect, useRef, useState } from 'react';
 import { useLocation, useNavigate } from 'react-router-dom';
 import { Modal } from './index';
 import Cancel from '../assets/svgs/btns/cancel-dark.svg';
@@ -9,9 +9,13 @@ const Create = () => {
 	const navigate = useNavigate();
 	const inputRef = useRef(null);
 
-	const [image, setImage] = useState();
+	const [image, setImage] = useState(null);
 
-	const uploadImg = async (event) => {
+	useEffect(() => {
+		if (imageUrl) setImage(imageUrl);
+	}, []);
+
+	const uploadImg = (event) => {
 		const selectedImageUrl = URL.createObjectURL(event.target.files[0]);
 		setImage(selectedImageUrl);
 	};
@@ -25,14 +29,9 @@ const Create = () => {
 					<button type='button'>Share</button>
 				</div>
 				<div className='create-image-container'>
-					{imageUrl && <img src={imageUrl} alt='post image' />}
-					{!imageUrl && (
-						<>
-							{!image && <button onClick={() => inputRef.current.click()}>Select from computer</button>}
-							<input type='file' accept='img/*' onChange={uploadImg} ref={inputRef} />
-							{image && <img src={image} alt='post image' />}{' '}
-						</>
-					)}
+					{image && <img src={image} alt='post image' />}
+					{!image && <button onClick={() => inputRef.current.click()}>Select from computer</button>}
+					<input type='file' accept='img/*' onChange={uploadImg} ref={inputRef} />
 				</div>
 				<div className='create-details'>
 					<div className='create-details-user'>

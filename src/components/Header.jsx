@@ -7,7 +7,7 @@ const Header = () => {
 	const inputRef = useRef(null);
 	const navigate = useNavigate();
 
-	const uploadImg = async (event) => {
+	const uploadImg = (event) => {
 		//TODO: when i share the post
 		// const { secure_url } = await uploadService.uploadImg(event);
 		const selectedImageUrl = URL.createObjectURL(event.target.files[0]);

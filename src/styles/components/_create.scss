@@ -19,6 +19,7 @@
 		align-items: center;
 		padding: 0 16px;
 		text-align: center;
+		border-bottom: 1px solid $border-color;
 
 		.create-header-title {
 			font-weight: 600;
@@ -30,10 +31,26 @@
 	}
 
 	.create-image-container {
+		display: flex;
+		align-items: center;
+		justify-content: center;
+		border-bottom: 1px solid $border-color;
+
 		img {
 			height: 100%;
 			width: 100%;
 			object-fit: cover;
+		}
+
+		input {
+			display: none;
+		}
+
+		button {
+			background-color: $blue-color;
+			color: $white-color;
+			border-radius: 8px;
+			padding: 7px 16px;
 		}
 	}
 
@@ -69,7 +86,6 @@
 			grid-area: h;
 			display: initial;
 			padding: 4px 0 16px 4px;
-			border-bottom: 1px solid $border-color;
 			display: flex;
 			justify-content: space-between;
 
@@ -83,20 +99,7 @@
 			height: 350px;
 			width: 350px;
 			border-right: 1px solid $border-color;
-			display: flex;
-			align-items: center;
-			justify-content: center;
-
-			button {
-				background-color: $blue-color;
-				color: $white-color;
-				border-radius: 8px;
-				padding: 7px 16px;
-			}
-
-			input {
-				display: none;
-			}
+			border-bottom: none;
 		}
 
 		.create-details {
