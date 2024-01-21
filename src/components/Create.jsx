@@ -4,33 +4,46 @@ import { Modal } from './index';
 import Cancel from '../assets/svgs/btns/cancel-dark.svg';
 
 const Create = () => {
-	const { state: imageUrl } = useLocation();
+	const { state } = useLocation();
 	const navigate = useNavigate();
 	const inputRef = useRef(null);
-	const { story } = useOutletContext();
+	const { story, onEditStory, onDeleteStory, onShareStory } = useOutletContext();
 
-	const [image, setImage] = useState(null);
+	const [imageDisplay, setImageDisplay] = useState();
+	const [imageUrl, setImageUrl] = useState();
 
 	useEffect(() => {
-		if (imageUrl) setImage(imageUrl);
+		if (state) {
+			setImageUrl(() => state);
+			setImageDisplay(() => URL.createObjectURL(state));
+		}
 	}, []);
 
 	const uploadImg = (event) => {
-		const selectedImageUrl = URL.createObjectURL(event.target.files[0]);
-		setImage(selectedImageUrl);
+		const selectedImage = event.target.files[0];
+		setImageUrl(() => selectedImage);
+		const selectedImageUrl = URL.createObjectURL(selectedImage);
+		setImageDisplay(() => selectedImageUrl);
+	};
+
+	const onCancel = () => {
+		onDeleteStory();
+		navigate(-1);
 	};
 
 	return (
-		<Modal>
+		<Modal onDeleteStory={onDeleteStory}>
 			<div className='create'>
 				<div className='create-header'>
-					<img src={Cancel} alt='cancel' onClick={() => navigate(-1)} />
+					<img src={Cancel} alt='cancel' onClick={onCancel} />
 					<div className='create-header-title'>New Photo Post</div>
-					<button type='button'>Share</button>
+					<button type='button' onClick={() => onShareStory(imageUrl)}>
+						Share
+					</button>
 				</div>
 				<div className='create-image-container'>
-					{image && <img src={image} alt='post image' />}
-					{!image && <button onClick={() => inputRef.current.click()}>Select from computer</button>}
+					{imageDisplay && <img src={imageDisplay} alt='post image' />}
+					{!imageDisplay && <button onClick={() => inputRef.current.click()}>Select from computer</button>}
 					<input type='file' accept='img/*' onChange={uploadImg} ref={inputRef} />
 				</div>
 				<div className='create-details'>
@@ -38,7 +51,7 @@ const Create = () => {
 						<img src={story.by.imgUrl} alt='user image' />
 						<div>{story.by.userName}</div>
 					</div>
-					<textarea placeholder='Add your description...'></textarea>
+					<textarea placeholder='Add your description...' name='txt' value={story.txt} onChange={onEditStory} />
 				</div>
 			</div>
 		</Modal>

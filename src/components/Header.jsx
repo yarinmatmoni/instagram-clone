@@ -8,10 +8,7 @@ const Header = () => {
 	const navigate = useNavigate();
 
 	const uploadImg = (event) => {
-		//TODO: when i share the post
-		// const { secure_url } = await uploadService.uploadImg(event);
-		const selectedImageUrl = URL.createObjectURL(event.target.files[0]);
-		navigate('/create', { state: selectedImageUrl });
+		navigate('/create', { state: event.target.files[0] });
 	};
 
 	return (
