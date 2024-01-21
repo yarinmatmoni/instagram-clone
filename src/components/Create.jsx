@@ -37,7 +37,7 @@ const Create = () => {
 				<div className='create-header'>
 					<img src={Cancel} alt='cancel' onClick={onCancel} />
 					<div className='create-header-title'>New Photo Post</div>
-					<button type='button' onClick={() => onShareStory(imageUrl)}>
+					<button type='button' data-disabled={!!imageUrl} onClick={() => onShareStory(imageUrl)}>
 						Share
 					</button>
 				</div>

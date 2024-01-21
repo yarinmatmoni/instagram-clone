@@ -2,7 +2,7 @@ import { useEffect, useState } from 'react';
 import { Outlet, useNavigate } from 'react-router-dom';
 import { useSelector } from 'react-redux';
 import { StoryList, Suggest } from '../components/index';
-import { loadStories } from '../store/actions/story.action';
+import { addNewStory, loadStories } from '../store/actions/story.action';
 import { uploadService } from '../services/upload.service';
 import { storyService } from '../services/story.service';
 
@@ -16,11 +16,19 @@ const Home = () => {
 		loadStories();
 	}, []);
 
+	useEffect(() => {
+		if (!story.imgUrl) return;
+		addNewStory(story);
+		navigate('/');
+	}, [story.imgUrl]);
+
 	const onShareStory = async (image) => {
-		const { secure_url } = await uploadService.uploadImg(image);
-		console.log(secure_url);
-		navigate(-1);
-		//TODO: now i have the img url --> need add the story include text and img url
+		try {
+			const { secure_url } = await uploadService.uploadImg(image);
+			setStory((prevData) => ({ ...prevData, imgUrl: secure_url }));
+		} catch (error) {
+			console.error('Error uploading image:', error);
+		}
 	};
 
 	const onEditStory = (event) => {

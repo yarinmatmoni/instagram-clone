@@ -16,7 +16,7 @@ const Story = ({ story }) => {
 				<img src={Menu} alt='menu' className='menu' />
 			</div>
 			<div className='story-image'>
-				<img src={Image} alt='story image' />
+				<img src={story.imgUrl || Image} alt='story image' />
 			</div>
 			<div className='story-details'>
 				<div className='story-options'>

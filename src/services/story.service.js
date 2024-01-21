@@ -6,7 +6,12 @@ const USER_KEY = 'user';
 
 const query = async () => {
 	const stories = await storageService.query(STORAGE_KEY);
-	return stories;
+	return stories.reverse();
+};
+
+const addStory = async (story) => {
+	const newStory = await storageService.post(STORAGE_KEY, story);
+	return newStory;
 };
 
 const getDefaultStory = () => {
@@ -88,4 +93,4 @@ const _createLikes = (index) => {
 
 _createDemoData();
 
-export const storyService = { query, getDefaultStory };
+export const storyService = { query, addStory, getDefaultStory };

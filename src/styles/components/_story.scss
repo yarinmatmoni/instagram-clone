@@ -1,6 +1,7 @@
 .story {
 	display: grid;
 	grid-template-rows: auto $image-story-h auto;
+	padding-bottom: 15px;
 
 	.story-user-info {
 		display: grid;
