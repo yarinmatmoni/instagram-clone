@@ -31,9 +31,13 @@ const Home = () => {
 		}
 	};
 
-	const onEditStory = (event) => {
-		const { value, name: filedName } = event.target;
-		setStory((prevData) => ({ ...prevData, [filedName]: value }));
+	const onEditStory = async (event) => {
+		try {
+			const { value, name: filedName } = event.target;
+			setStory((prevData) => ({ ...prevData, [filedName]: value }));
+		} catch (error) {
+			console.log('error', error);
+		}
 	};
 
 	const onDeleteStory = () => {
