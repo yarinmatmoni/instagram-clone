@@ -2,7 +2,7 @@ import { useEffect, useState } from 'react';
 import { Outlet, useNavigate } from 'react-router-dom';
 import { useSelector } from 'react-redux';
 import { StoryList, Suggest } from '../components/index';
-import { addNewStory, loadStories, updateStory } from '../store/actions/story.action';
+import { addNewStory, loadStories, updateStoryLike } from '../store/actions/story.action';
 import { uploadService } from '../services/upload.service';
 import { storyService } from '../services/story.service';
 
@@ -41,14 +41,13 @@ const Home = () => {
 		setStory(() => storyService.getDefaultStory());
 	};
 
-	const onUpdateStory = (event, storyId) => {
-		const { name: fieldName } = event.target;
-		updateStory(storyId, fieldName);
+	const onUpdateStoryLike = (storyId) => {
+		updateStoryLike(storyId);
 	};
 
 	return (
 		<div className='home'>
-			<StoryList stories={stories} onUpdateStory={onUpdateStory} />
+			<StoryList stories={stories} onUpdateStoryLike={onUpdateStoryLike} />
 			<Suggest />
 			<Outlet context={{ story, onEditStory, onDeleteStory, onShareStory }} />
 		</div>

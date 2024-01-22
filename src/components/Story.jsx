@@ -10,7 +10,7 @@ import Save from '../assets/svgs/btns/saved.svg';
 import { userService } from '../services/user.service';
 import { useEffect, useState } from 'react';
 
-const Story = ({ story, onUpdateStory }) => {
+const Story = ({ story, onUpdateStoryLike }) => {
 	const [like, setLike] = useState(false);
 
 	useEffect(() => {
@@ -35,12 +35,7 @@ const Story = ({ story, onUpdateStory }) => {
 			<div className='story-details'>
 				<div className='story-options'>
 					<div className='story-options-left'>
-						<img
-							src={like ? FullHeart : Heart}
-							alt='like'
-							name='likedBy'
-							onClick={(event) => onUpdateStory(event, story._id)}
-						/>
+						<img src={like ? FullHeart : Heart} alt='like' onClick={() => onUpdateStoryLike(story._id)} />
 						<img src={Comment} alt='comment' />
 						<img src={Share} alt='share' />
 					</div>

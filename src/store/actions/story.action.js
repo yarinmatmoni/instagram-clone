@@ -21,11 +21,14 @@ export const addNewStory = async (storyToAdd) => {
 	}
 };
 
-export const updateStory = async (storyId, fieldToUpdate) => {
+export const updateStoryLike = async (storyId) => {
 	try {
 		const story = await storyService.getStory(storyId);
 		const user = await userService.getMiniUser();
-		story[fieldToUpdate] = [...story[fieldToUpdate], user];
+
+		const isLiked = story.likedBy.some((u) => u._id === user._id);
+		story.likedBy = !isLiked ? [...story.likedBy, user] : [...story.likedBy.filter((u) => u._id !== user._id)];
+
 		const storyToUpdate = await storyService.updateStory(story);
 		store.dispatch({ type: UPDATE_STORY, story: storyToUpdate });
 	} catch (error) {

@@ -20,6 +20,7 @@ export const storyReducer = (state = initialState, action = {}) => {
 				stories: state.stories.map((story) => (story._id === action.story._id ? action.story : story)),
 			};
 		}
+
 		default:
 			return state;
 	}
