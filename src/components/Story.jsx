@@ -3,11 +3,25 @@ import Avatar from '../assets/images/avatar.png';
 import Image from '../assets/images/image-placeholder.png';
 import Menu from '../assets/svgs/btns/menu3.svg';
 import Heart from '../assets/svgs/btns/heart.svg';
+import FullHeart from '../assets/svgs/btns/full-heart.svg';
 import Comment from '../assets/svgs/btns/comment.svg';
 import Share from '../assets/svgs/btns/share.svg';
 import Save from '../assets/svgs/btns/saved.svg';
+import { userService } from '../services/user.service';
+import { useEffect, useState } from 'react';
 
-const Story = ({ story }) => {
+const Story = ({ story, onUpdateStory }) => {
+	const [like, setLike] = useState(false);
+
+	useEffect(() => {
+		isLiked();
+	}, [story]);
+
+	const isLiked = async () => {
+		const currentLoginUser = await userService.getMiniUser();
+		setLike(() => story.likedBy.some((user) => user._id === currentLoginUser._id));
+	};
+
 	return (
 		<div className='story'>
 			<div className='story-user-info'>
@@ -21,7 +35,12 @@ const Story = ({ story }) => {
 			<div className='story-details'>
 				<div className='story-options'>
 					<div className='story-options-left'>
-						<img src={Heart} alt='like' />
+						<img
+							src={like ? FullHeart : Heart}
+							alt='like'
+							name='likedBy'
+							onClick={(event) => onUpdateStory(event, story._id)}
+						/>
 						<img src={Comment} alt='comment' />
 						<img src={Share} alt='share' />
 					</div>

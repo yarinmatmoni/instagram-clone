@@ -14,6 +14,16 @@ const addStory = async (story) => {
 	return newStory;
 };
 
+const getStory = async (storyId) => {
+	const story = await storageService.get(STORAGE_KEY, storyId);
+	return story;
+};
+
+const updateStory = async (storyToUpdate) => {
+	const story = await storageService.put(STORAGE_KEY, storyToUpdate);
+	return story;
+};
+
 const getDefaultStory = () => {
 	const user = JSON.parse(localStorage.getItem(USER_KEY));
 
@@ -93,4 +103,4 @@ const _createLikes = (index) => {
 
 _createDemoData();
 
-export const storyService = { query, addStory, getDefaultStory };
+export const storyService = { query, addStory, getStory, updateStory, getDefaultStory };

@@ -1,5 +1,6 @@
 import { storyService } from '../../services/story.service';
-import { ADD_STORY, SET_STORIES } from '../reducers/story.reducer';
+import { userService } from '../../services/user.service';
+import { ADD_STORY, SET_STORIES, UPDATE_STORY } from '../reducers/story.reducer';
 import { store } from '../store';
 
 export const loadStories = async () => {
@@ -17,5 +18,17 @@ export const addNewStory = async (storyToAdd) => {
 		store.dispatch({ type: ADD_STORY, story: newStory });
 	} catch (error) {
 		console.log('Had issue to add new story');
+	}
+};
+
+export const updateStory = async (storyId, fieldToUpdate) => {
+	try {
+		const story = await storyService.getStory(storyId);
+		const user = await userService.getMiniUser();
+		story[fieldToUpdate] = [...story[fieldToUpdate], user];
+		const storyToUpdate = await storyService.updateStory(story);
+		store.dispatch({ type: UPDATE_STORY, story: storyToUpdate });
+	} catch (error) {
+		console.log('Had issue to update the story', error);
 	}
 };

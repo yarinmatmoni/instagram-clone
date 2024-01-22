@@ -2,7 +2,7 @@ import { useEffect, useState } from 'react';
 import { Outlet, useNavigate } from 'react-router-dom';
 import { useSelector } from 'react-redux';
 import { StoryList, Suggest } from '../components/index';
-import { addNewStory, loadStories } from '../store/actions/story.action';
+import { addNewStory, loadStories, updateStory } from '../store/actions/story.action';
 import { uploadService } from '../services/upload.service';
 import { storyService } from '../services/story.service';
 
@@ -31,22 +31,23 @@ const Home = () => {
 		}
 	};
 
-	const onEditStory = async (event) => {
-		try {
-			const { value, name: filedName } = event.target;
-			setStory((prevData) => ({ ...prevData, [filedName]: value }));
-		} catch (error) {
-			console.log('error', error);
-		}
+	const onEditStory = (event) => {
+		const { value, name: filedName } = event.target;
+		setStory((prevData) => ({ ...prevData, [filedName]: value }));
 	};
 
 	const onDeleteStory = () => {
 		setStory(() => storyService.getDefaultStory());
 	};
 
+	const onUpdateStory = (event, storyId) => {
+		const { name: fieldName } = event.target;
+		updateStory(storyId, fieldName);
+	};
+
 	return (
 		<div className='home'>
-			<StoryList stories={stories} />
+			<StoryList stories={stories} onUpdateStory={onUpdateStory} />
 			<Suggest />
 			<Outlet context={{ story, onEditStory, onDeleteStory, onShareStory }} />
 		</div>
