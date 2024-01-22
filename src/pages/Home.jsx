@@ -19,6 +19,7 @@ const Home = () => {
 	useEffect(() => {
 		if (!story.imgUrl) return;
 		addNewStory(story);
+		onDeleteStory();
 		navigate('/');
 	}, [story.imgUrl]);
 
