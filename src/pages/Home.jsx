@@ -9,7 +9,6 @@ import { storyService } from '../services/story.service';
 const Home = () => {
 	const navigate = useNavigate();
 	const stories = useSelector((storeState) => storeState.storyReducer.stories);
-
 	const [story, setStory] = useState(storyService.getDefaultStory());
 
 	useEffect(() => {

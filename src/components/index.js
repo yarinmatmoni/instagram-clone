@@ -5,5 +5,6 @@ import Story from './Story';
 import Suggest from './Suggest';
 import Modal from './Modal';
 import Create from './Create';
+import StoryDetails from './StoryDetails';
 
-export { Navbar, Header, StoryList, Story, Suggest, Modal, Create };
+export { Navbar, Header, StoryList, Story, Suggest, Modal, Create, StoryDetails };

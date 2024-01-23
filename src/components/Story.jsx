@@ -1,4 +1,6 @@
-import { Link } from 'react-router-dom';
+import { useEffect, useState } from 'react';
+import { Link, useNavigate } from 'react-router-dom';
+import { userService } from '../services/user.service';
 import Avatar from '../assets/images/avatar.png';
 import Image from '../assets/images/image-placeholder.png';
 import Menu from '../assets/svgs/btns/menu3.svg';
@@ -7,11 +9,10 @@ import FullHeart from '../assets/svgs/btns/full-heart.svg';
 import Comment from '../assets/svgs/btns/comment.svg';
 import Share from '../assets/svgs/btns/share.svg';
 import Save from '../assets/svgs/btns/saved.svg';
-import { userService } from '../services/user.service';
-import { useEffect, useState } from 'react';
 
 const Story = ({ story, onUpdateStoryLike }) => {
 	const [like, setLike] = useState(false);
+	const navigate = useNavigate();
 
 	useEffect(() => {
 		isLiked();
@@ -36,7 +37,7 @@ const Story = ({ story, onUpdateStoryLike }) => {
 				<div className='story-options'>
 					<div className='story-options-left'>
 						<img src={like ? FullHeart : Heart} alt='like' onClick={() => onUpdateStoryLike(story._id)} />
-						<img src={Comment} alt='comment' />
+						<img src={Comment} alt='comment' onClick={() => navigate(`/p/${story._id}`)} />
 						<img src={Share} alt='share' />
 					</div>
 					<img src={Save} alt='save' />

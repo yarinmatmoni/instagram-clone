@@ -5,7 +5,7 @@ const Modal = ({ children, onDeleteStory }) => {
 	const navigate = useNavigate();
 
 	const onCancel = () => {
-		onDeleteStory();
+		onDeleteStory && onDeleteStory();
 		navigate(-1);
 	};
 
