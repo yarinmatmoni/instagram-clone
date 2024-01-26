@@ -1,165 +1,166 @@
 .navbar {
-	grid-area: na;
-	background-color: $bg-color;
+  grid-area: na;
+  background-color: $bg-color;
 
-	.name,
-	.logo,
-	.menu {
-		display: none;
-	}
+  .name,
+  .logo,
+  .menu {
+    display: none;
+  }
 
-	.navbar-links {
-		height: $navbar-mobile-h;
-		display: flex;
-		align-items: center;
-		justify-content: space-evenly;
-		border-top: 1px solid $border-color;
+  .navbar-links {
+    height: $navbar-mobile-h;
+    display: flex;
+    align-items: center;
+    justify-content: space-evenly;
+    border-top: 1px solid $border-color;
 
-		a {
-			padding: 12px;
-			display: flex;
-			align-items: center;
-			transition: all 0.3s ease;
+    a {
+      padding: 12px;
+      display: flex;
+      align-items: center;
+      transition: all 0.3s ease;
 
-			&:not(.mobile-display) {
-				display: none;
-			}
+      &:not(.mobile-display) {
+        display: none;
+      }
 
-			img {
-				height: 24px;
-				width: 24px;
-				transition: all 0.3s ease;
-			}
+      img {
+        height: 24px;
+        width: 24px;
+        transition: all 0.3s ease;
+      }
 
-			.profile {
-				border-radius: 50%;
-			}
-		}
-	}
+      .profile {
+        border-radius: 50%;
+      }
+    }
+  }
 
-	@include narrow-layout {
-		border-right: 1px solid $border-color;
-		height: 100%;
-		width: $navbar-narrow-w;
-		display: grid;
-		grid-template-rows: 92px 1fr 112px;
+  @include narrow-layout {
+    border-right: 1px solid $border-color;
+    height: 100%;
+    width: $navbar-narrow-w;
+    display: grid;
+    grid-template-rows: auto 1fr auto;
 
-		.logo {
-			padding-top: 12px;
-			align-items: center;
-			justify-content: center;
-			display: flex;
-			height: 92px;
+    .logo {
+      padding-top: 12px;
+      align-items: center;
+      justify-content: center;
+      display: flex;
+      height: 92px;
 
-			.logo-image {
-				height: 26px;
-				width: 26px;
-				background-repeat: no-repeat;
-				background-image: url('../assets/svgs/logo-camera.svg');
-				background-size: contain;
-				background-repeat: no-repeat;
-				background-position: center;
-				transition: all 0.3s ease;
+      .logo-image {
+        height: 26px;
+        width: 26px;
+        background-repeat: no-repeat;
+        background-image: url("../assets/svgs/logo-camera.svg");
+        background-size: contain;
+        background-repeat: no-repeat;
+        background-position: center;
+        transition: all 0.3s ease;
 
-				&:hover {
-					background-color: $bg-color-hover;
-					border-radius: 8px;
-					transform: scale(1.08);
-				}
-			}
-		}
+        &:hover {
+          background-color: $bg-color-hover;
+          border-radius: 8px;
+          transform: scale(1.08);
+        }
+      }
+    }
 
-		.navbar-links {
-			padding-top: 12px;
-			border-top: initial;
-			display: grid;
-			height: fit-content;
-			gap: 8px;
+    .navbar-links {
+      padding-top: 12px;
+      border-top: initial;
+      display: grid;
+      height: fit-content;
+      gap: 8px;
 
-			a {
-				&:hover {
-					background-color: $bg-color-hover;
-					border-radius: 8px;
+      a {
+        &:hover {
+          background-color: $bg-color-hover;
+          border-radius: 8px;
 
-					img {
-						transform: scale(1.08);
-					}
-				}
+          img {
+            transform: scale(1.08);
+          }
+        }
 
-				&:not(.mobile-display) {
-					display: flex;
-				}
-			}
-		}
+        &:not(.mobile-display) {
+          display: flex;
+        }
+      }
+    }
 
-		.menu {
-			display: flex;
-			align-items: center;
-			justify-content: center;
+    .menu {
+      display: flex;
+      align-items: center;
+      justify-content: center;
 
-			.menu-item {
-				display: flex;
-				padding: 12px;
-				cursor: pointer;
-				transition: all 0.3s ease;
+      .menu-item {
+        margin-bottom: 12px;
+        display: flex;
+        padding: 12px;
+        cursor: pointer;
+        transition: all 0.3s ease;
 
-				&:hover {
-					border-radius: 8px;
-					background-color: $bg-color-hover;
+        &:hover {
+          border-radius: 8px;
+          background-color: $bg-color-hover;
 
-					img {
-						transform: scale(1.08);
-					}
-				}
-			}
-		}
-	}
+          img {
+            transform: scale(1.08);
+          }
+        }
+      }
+    }
+  }
 
-	@include wide-layout {
-		width: 100%;
+  @include wide-layout {
+    width: 100%;
 
-		.name {
-			display: block;
-		}
+    .name {
+      display: block;
+    }
 
-		.navbar-links {
-			padding: 12px;
-			display: flex;
-			flex-direction: column;
-			align-items: flex-start;
+    .navbar-links {
+      padding: 12px;
+      display: flex;
+      flex-direction: column;
+      align-items: flex-start;
 
-			a {
-				width: 100%;
-				gap: 16px;
-			}
-		}
+      a {
+        width: 100%;
+        gap: 16px;
+      }
+    }
 
-		.logo {
-			justify-content: flex-start;
-			padding: 16px 24px 0 24px;
+    .logo {
+      justify-content: flex-start;
+      padding: 16px 24px 0 24px;
 
-			.logo-image {
-				height: 29px;
-				width: 103px;
-				background-image: url('../assets/svgs/logo-instagram.svg');
+      .logo-image {
+        height: 29px;
+        width: 103px;
+        background-image: url("../assets/svgs/logo-instagram.svg");
 
-				&:hover {
-					background-color: initial;
-					transform: initial;
-					border-radius: initial;
-				}
-			}
-		}
+        &:hover {
+          background-color: initial;
+          transform: initial;
+          border-radius: initial;
+        }
+      }
+    }
 
-		.menu {
-			justify-content: flex-start;
-			padding: 24px;
+    .menu {
+      justify-content: flex-start;
+      padding: 0 12px;
 
-			.menu-item {
-				display: flex;
-				gap: 16px;
-				width: 100%;
-			}
-		}
-	}
+      .menu-item {
+        display: flex;
+        gap: 16px;
+        width: 100%;
+      }
+    }
+  }
 }
