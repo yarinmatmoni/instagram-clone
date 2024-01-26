@@ -1,24 +1,21 @@
-import { Comment } from './index';
-import Avatar from '../assets/images/avatar.png';
+import { Comment } from "./index";
 
 const CommentList = ({ comments, text, byUser }) => {
-	if (comments?.length === 0 || !text || !byUser) return <div>No comments yet.</div>;
+  if (comments?.length === 0 || !text || !byUser)
+    return <div>No comments yet...</div>;
 
-	return (
-		<div className='comment-list'>
-			<div className='story-txt'>
-				{/* FIXME: img src --> byUser.imgUrl */}
-				<div className='story-txt-user'>
-					<img src={Avatar} alt='profile image' />
-					<div>{byUser.userName}</div>
-				</div>
-				{text}
-			</div>
-			{comments?.map((comment) => (
-				<Comment key={comment._id} comment={comment} />
-			))}
-		</div>
-	);
+  return (
+    <div className="comment-list">
+      <div className="story-txt">
+        <Comment comment={text} by={byUser.userName} />
+      </div>
+      <div className="comments-list">
+        {comments?.map((comment) => (
+          <Comment key={comment._id} comment={comment.txt} by={comment.by} />
+        ))}
+      </div>
+    </div>
+  );
 };
 
 export default CommentList;
