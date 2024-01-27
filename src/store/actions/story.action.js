@@ -1,5 +1,6 @@
 import { storyService } from "../../services/story.service";
 import { userService } from "../../services/user.service";
+import { utilsService } from "../../services/utils.service";
 import {
   ADD_STORY,
   SET_STORIES,
@@ -39,5 +40,25 @@ export const updateStoryLike = async (storyId) => {
     store.dispatch({ type: UPDATE_STORY, story: storyToUpdate });
   } catch (error) {
     console.log("Had issue to update the story", error);
+  }
+};
+
+export const updateStoryComments = async (storyId, comment) => {
+  try {
+    const story = await storyService.getStory(storyId);
+    const user = await userService.getMiniUser();
+
+    const commentToUpdate = {
+      _id: utilsService.makeId(),
+      by: user,
+      txt: comment,
+      likedBy: [],
+    };
+
+    story.comments = [commentToUpdate, ...story.comments];
+    const storyToUpdate = await storyService.updateStory(story);
+    store.dispatch({ type: UPDATE_STORY, story: storyToUpdate });
+  } catch (error) {
+    console.log("Had issue to update the comment in the story", error);
   }
 };

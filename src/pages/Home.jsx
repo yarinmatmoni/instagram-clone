@@ -5,6 +5,7 @@ import { StoryList, Suggest } from "../components/index";
 import {
   addNewStory,
   loadStories,
+  updateStoryComments,
   updateStoryLike,
 } from "../store/actions/story.action";
 import { uploadService } from "../services/upload.service";
@@ -37,6 +38,8 @@ const Home = () => {
     }
   };
 
+  console.log("update story");
+
   const onEditStory = (event) => {
     const { value, name: filedName } = event.target;
     setStory((prevData) => ({ ...prevData, [filedName]: value }));
@@ -50,11 +53,23 @@ const Home = () => {
     updateStoryLike(storyId);
   };
 
+  const onAddCommit = (storyId, comment) => {
+    updateStoryComments(storyId, comment);
+  };
+
   return (
     <div className="home">
       <StoryList stories={stories} onUpdateStoryLike={onUpdateStoryLike} />
       <Suggest />
-      <Outlet context={{ story, onEditStory, onDeleteStory, onShareStory }} />
+      <Outlet
+        context={{
+          story,
+          onEditStory,
+          onDeleteStory,
+          onShareStory,
+          onAddCommit,
+        }}
+      />
     </div>
   );
 };

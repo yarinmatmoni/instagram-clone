@@ -1,4 +1,4 @@
-import { useNavigate, useParams } from "react-router-dom";
+import { useNavigate, useParams, useOutletContext } from "react-router-dom";
 import { CommentList, Modal } from "./index";
 import Back from "../assets/svgs/btns/back.svg";
 import { storyService } from "../services/story.service";
@@ -9,13 +9,25 @@ const StoryDetails = () => {
   const navigate = useNavigate();
   const { storyId } = useParams();
   const [story, setStory] = useState();
+  const [comment, setComment] = useState("");
+  const { onAddCommit } = useOutletContext();
 
   useEffect(() => {
     loadStory();
-  }, []);
+  }, [story]);
 
   const loadStory = async () => {
     setStory(await storyService.getStory(storyId));
+  };
+
+  const onChangeStory = (event) => {
+    setComment(event.target.value);
+  };
+
+  const onSubmitComment = (event) => {
+    event.preventDefault();
+    onAddCommit(story._id, comment);
+    setComment("");
   };
 
   return (
@@ -35,13 +47,18 @@ const StoryDetails = () => {
               text={story?.txt}
               byUser={story?.by}
             />
-            <div className="story-details-input">
+            <form className="story-details-input" onSubmit={onSubmitComment}>
               <div className="image-container">
                 <img src={story.by.imgUrl} alt="profile image" />
               </div>
-              <input type="text" placeholder="Add a comment..." />
+              <input
+                type="text"
+                placeholder="Add a comment..."
+                onChange={onChangeStory}
+                value={comment}
+              />
               <button data-disabled={true}>Post</button>
-            </div>
+            </form>
           </div>
         </div>
       </Modal>
