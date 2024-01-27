@@ -4,6 +4,7 @@ import Back from "../assets/svgs/btns/back.svg";
 import Avatar from "../assets/images/avatar.png";
 import { storyService } from "../services/story.service";
 import { useEffect, useState } from "react";
+import DefaultImage from "../assets/images/image-placeholder.png";
 
 const StoryDetails = () => {
   const navigate = useNavigate();
@@ -19,27 +20,33 @@ const StoryDetails = () => {
   };
 
   return (
-    <Modal>
-      <div className="story-details-container">
-        <div className="story-details-header">
-          <img src={Back} alt="back" onClick={() => navigate(-1)} />
-          <div className="title">Comments</div>
-        </div>
-        <CommentList
-          comments={story?.comments}
-          text={story?.txt}
-          byUser={story?.by}
-        />
-        {/* TODO: data-disabled */}
-        <div className="story-details-input">
-          <div className="image-container">
-            <img src={Avatar} alt="profile image" />
+    story && (
+      <Modal padding={false}>
+        <div className="story-details-container">
+          <div className="story-details-header">
+            <img src={Back} alt="back" onClick={() => navigate(-1)} />
+            <div className="title">Comments</div>
           </div>
-          <input type="text" placeholder="Add a comment..." />
-          <button data-disabled={true}>Post</button>
+          <div className="story-image">
+            <img src={story?.imgUrl || DefaultImage} alt="story image" />
+          </div>
+          <div className="story-details">
+            <CommentList
+              comments={story?.comments}
+              text={story?.txt}
+              byUser={story?.by}
+            />
+            <div className="story-details-input">
+              <div className="image-container">
+                <img src={Avatar} alt="profile image" />
+              </div>
+              <input type="text" placeholder="Add a comment..." />
+              <button data-disabled={true}>Post</button>
+            </div>
+          </div>
         </div>
-      </div>
-    </Modal>
+      </Modal>
+    )
   );
 };
 

@@ -30,6 +30,15 @@
     }
   }
 
+  .story-image {
+    display: none;
+  }
+
+  .story-details {
+    display: grid;
+    grid-template-rows: 1fr auto;
+  }
+
   .story-details-input {
     height: 80px;
     display: grid;
@@ -60,6 +69,42 @@
 
     button {
       color: $blue-color;
+    }
+  }
+
+  @include narrow-layout {
+    height: 85vh;
+    width: 70vw;
+    grid-template-columns: 50% 1fr;
+    grid-template-areas: "im sd" "im sd";
+    padding: initial;
+
+    .story-details-header {
+      display: none;
+    }
+
+    .story-image {
+      display: initial;
+      grid-area: im;
+
+      img {
+        height: 100%;
+        width: 100%;
+        object-fit: cover;
+      }
+    }
+
+    .story-details {
+      grid-area: sd;
+
+      .story-txt {
+        border-bottom: 1px solid $border-color;
+        padding: 0 12px;
+      }
+
+      .comments-list {
+        height: calc(85vh - 80px - 60px);
+      }
     }
   }
 }
