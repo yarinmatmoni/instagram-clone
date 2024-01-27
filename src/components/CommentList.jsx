@@ -7,7 +7,7 @@ const CommentList = ({ comments, text, byUser }) => {
   return (
     <div className="comment-list">
       <div className="story-txt">
-        <Comment comment={text} by={byUser.userName} />
+        <Comment comment={text} by={byUser} />
       </div>
       <div className="comments-list">
         {comments?.map((comment) => (

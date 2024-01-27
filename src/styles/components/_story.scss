@@ -1,148 +1,149 @@
 .story {
-	display: grid;
-	grid-template-rows: auto $image-story-h auto;
-	padding-bottom: 15px;
+  display: grid;
+  grid-template-rows: auto $image-story-h auto;
+  padding-bottom: 15px;
 
-	.story-user-info {
-		display: grid;
-		grid-auto-flow: column;
-		grid-template-columns: auto 1fr auto;
-		align-items: center;
-		padding: 12px;
-		gap: 12px;
+  .story-user-info {
+    display: grid;
+    grid-auto-flow: column;
+    grid-template-columns: auto 1fr auto;
+    align-items: center;
+    padding: 12px;
+    gap: 12px;
 
-		img {
-			height: 32px;
-			width: 32px;
-			border-radius: 50%;
-			overflow: hidden;
-		}
+    img {
+      height: 32px;
+      width: 32px;
+      border-radius: 50%;
+      overflow: hidden;
+      object-fit: cover;
+    }
 
-		.story-userName {
-			font-size: 14px;
-			font-weight: 600;
-		}
+    .story-userName {
+      font-size: 14px;
+      font-weight: 600;
+    }
 
-		.menu {
-			height: 24px;
-			width: 24px;
-		}
-	}
+    .menu {
+      height: 24px;
+      width: 24px;
+    }
+  }
 
-	.story-image {
-		overflow: hidden;
+  .story-image {
+    overflow: hidden;
 
-		img {
-			object-fit: cover;
-			height: 100%;
-			width: 100%;
-		}
-	}
+    img {
+      object-fit: cover;
+      height: 100%;
+      width: 100%;
+    }
+  }
 
-	.story-details {
-		display: flex;
-		flex-direction: column;
-		padding: 0 16px;
+  .story-details {
+    display: flex;
+    flex-direction: column;
+    padding: 0 16px;
 
-		.story-options {
-			margin-top: 4px;
-			padding: 6px 0 8px 0;
-			display: grid;
-			grid-auto-flow: column;
-			align-items: center;
-			justify-content: space-between;
+    .story-options {
+      margin-top: 4px;
+      padding: 6px 0 8px 0;
+      display: grid;
+      grid-auto-flow: column;
+      align-items: center;
+      justify-content: space-between;
 
-			img {
-				height: 24px;
-				width: 24px;
-				cursor: pointer;
-			}
+      img {
+        height: 24px;
+        width: 24px;
+        cursor: pointer;
+      }
 
-			.story-options-left {
-				display: grid;
-				grid-auto-flow: column;
-				gap: 14px;
-			}
-		}
+      .story-options-left {
+        display: grid;
+        grid-auto-flow: column;
+        gap: 14px;
+      }
+    }
 
-		.story-likes {
-			margin-bottom: 8px;
-			font-size: 14px;
-			font-weight: 600;
-		}
+    .story-likes {
+      margin-bottom: 8px;
+      font-size: 14px;
+      font-weight: 600;
+    }
 
-		.story-description {
-			display: grid;
-			grid-auto-flow: column;
-			grid-template-columns: auto 1fr;
-			align-items: center;
-			gap: 6px;
-			margin-bottom: 4px;
+    .story-description {
+      display: grid;
+      grid-auto-flow: column;
+      grid-template-columns: auto 1fr;
+      align-items: center;
+      gap: 6px;
+      margin-bottom: 4px;
 
-			a {
-				font-weight: 600;
-				font-size: 14px;
-			}
+      a {
+        font-weight: 600;
+        font-size: 14px;
+      }
 
-			.txt {
-				font-size: 14px;
-			}
-		}
+      .txt {
+        font-size: 14px;
+      }
+    }
 
-		.story-comments {
-			display: grid;
+    .story-comments {
+      display: grid;
 
-			a {
-				font-size: 14px;
-				font-weight: 400;
-				color: $light-gray;
-				margin-bottom: 4px;
-			}
+      a {
+        font-size: 14px;
+        font-weight: 400;
+        color: $light-gray;
+        margin-bottom: 4px;
+      }
 
-			textarea {
-				display: none;
-			}
-		}
+      textarea {
+        display: none;
+      }
+    }
 
-		.story-time-details {
-			font-weight: 400;
-			color: $light-gray;
-			font-size: 12px;
-		}
-	}
+    .story-time-details {
+      font-weight: 400;
+      color: $light-gray;
+      font-size: 12px;
+    }
+  }
 
-	@include narrow-layout {
-		max-width: $story-w;
-		border-bottom: 1px solid $border-color;
+  @include narrow-layout {
+    max-width: $story-w;
+    border-bottom: 1px solid $border-color;
 
-		.story-user-info {
-			padding: 12px 4px 12px 4px;
-		}
+    .story-user-info {
+      padding: 12px 4px 12px 4px;
+    }
 
-		.story-details {
-			padding: 0 4px 0 4px;
-		}
+    .story-details {
+      padding: 0 4px 0 4px;
+    }
 
-		.story-image {
-			img {
-				border-radius: 3px;
-			}
-		}
+    .story-image {
+      img {
+        border-radius: 3px;
+      }
+    }
 
-		.story-details {
-			.story-comments {
-				textarea {
-					margin-top: 8px;
-					display: flex;
-					min-height: 18px;
-					height: auto;
-					max-height: 80px;
-				}
-			}
-		}
+    .story-details {
+      .story-comments {
+        textarea {
+          margin-top: 8px;
+          display: flex;
+          min-height: 18px;
+          height: auto;
+          max-height: 80px;
+        }
+      }
+    }
 
-		.story-time-details {
-			display: none;
-		}
-	}
+    .story-time-details {
+      display: none;
+    }
+  }
 }

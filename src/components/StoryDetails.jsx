@@ -1,7 +1,6 @@
 import { useNavigate, useParams } from "react-router-dom";
 import { CommentList, Modal } from "./index";
 import Back from "../assets/svgs/btns/back.svg";
-import Avatar from "../assets/images/avatar.png";
 import { storyService } from "../services/story.service";
 import { useEffect, useState } from "react";
 import DefaultImage from "../assets/images/image-placeholder.png";
@@ -38,7 +37,7 @@ const StoryDetails = () => {
             />
             <div className="story-details-input">
               <div className="image-container">
-                <img src={Avatar} alt="profile image" />
+                <img src={story.by.imgUrl} alt="profile image" />
               </div>
               <input type="text" placeholder="Add a comment..." />
               <button data-disabled={true}>Post</button>
