@@ -38,8 +38,6 @@ const Home = () => {
     }
   };
 
-  console.log("update story");
-
   const onEditStory = (event) => {
     const { value, name: filedName } = event.target;
     setStory((prevData) => ({ ...prevData, [filedName]: value }));

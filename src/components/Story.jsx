@@ -64,7 +64,9 @@ const Story = ({ story, onUpdateStoryLike }) => {
         </div>
         {story.comments.length > 0 && (
           <div className="story-comments">
-            <Link to="/">View all {story.comments.length} comments</Link>
+            <Link to={`/p/${story._id}`}>
+              View all {story.comments.length} comments
+            </Link>
             <textarea
               type="text"
               placeholder="Add a comment..."
